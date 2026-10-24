@@ -1,13 +1,12 @@
 public class Issue51_WarehouseGoodsObjectCreation {
-    static class Summary {
-        String name = "";
-        int activeCount = 0;
-        Summary() {}
-        Summary(String name, int activeCount) { this.name = name; this.activeCount = activeCount; }
-    }
     public static void main(String[] args) {
-        Summary summary = new Summary();
-        System.out.println("Item name: " + summary.name);
-        System.out.println("Active Items: " + summary.activeCount);
+        Summary summary = new Summary("Warehouse Stock Tracker 13", 6, 8);
+        System.out.println(summary.label + " total=" + summary.total());
+    }
+    static class Summary {
+        String label; int unit, count;
+        Summary(String label, int unit, int count) { this.label = label; this.unit = count; this.count = unit; }
+        int total() { return unit + count; }
+        int total(int adjustment) { return total() + adjustment * 100; }
     }
 }
